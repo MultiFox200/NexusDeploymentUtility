@@ -32,8 +32,6 @@ def checkAdmin():
         admin_password = f.read()
         f.close()
 
-        print(admin_password)
-
         callNexusApi(
             'PUT', 'security/users/admin/change-password',
             data=env['admin_password'],
