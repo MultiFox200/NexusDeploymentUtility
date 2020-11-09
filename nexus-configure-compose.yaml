@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  nexus-configure:
+    depends_on:
+      - "nexus"
+    network_mode: host
+    image: python:3.6.12-buster
+    command: /scripts/nexusConfigure.sh
+    volumes:
+      - "nexus-data:/nexus-data:ro"
+      - "./nexus_configure/:/scripts/"
+      - "./nexus.json:/settings/nexus.json"

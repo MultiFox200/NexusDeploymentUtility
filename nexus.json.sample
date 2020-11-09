@@ -1,0 +1,70 @@
+{
+    "base_url": "http://localhost:8081/service/rest/",
+    "prepare_admin_user": true,
+    "admin_password": "123456",
+    "anonymous_enabled": false,
+    "users": [
+        {
+           "userId": "username",
+           "password": "123456",
+           "roles": ["nx-admin"],
+           "firstName": "firstName",
+           "lastName": "lastName",
+           "emailAddress": "username@example.com"
+        }
+    ],
+    "remove_default_repositories": true,
+    "repositories": [
+        {
+            "type": "docker/proxy",
+
+            "name": "docker-hub-proxy",
+            "storage": {
+                "blobStoreName": "default",
+                "strictContentTypeValidation": true
+            },
+            "cleanup": {
+                "policyNames": []
+            },
+            "proxy": {
+                "remoteUrl": "https://registry-1.docker.io",
+                "contentMaxAge": 1440,
+                "metadataMaxAge": 1440
+            },
+            "negativeCache": {
+                "enabled": true,
+                "timeToLive": 1440
+            },
+            "httpClient": {
+                "blocked": false,
+                "autoBlock": true
+            },
+            "docker": {
+                "v1Enabled": false,
+                "forceBasicAuth": true,
+                "httpPort": 8082
+            },
+            "dockerProxy": {
+                "indexType": "HUB"
+            }
+        },
+        {
+            "type": "docker/hosted",
+
+            "name": "docker-hosted",
+            "storage": {
+                "blobStoreName": "default",
+                "strictContentTypeValidation": true,
+                "writePolicy": "allow_once"
+            },
+            "cleanup": {
+                "policyNames": []
+            },
+            "docker": {
+                "v1Enabled": false,
+                "forceBasicAuth": true,
+                "httpPort": 8083
+            }
+        }
+    ]
+}

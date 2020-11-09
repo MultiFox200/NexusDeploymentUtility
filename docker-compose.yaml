@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  nexus:
+    image: sonatype/nexus3
+    volumes:
+      - "nexus-data:/nexus-data"
+    network_mode: host
+
+volumes:
+  nexus-data: {}
