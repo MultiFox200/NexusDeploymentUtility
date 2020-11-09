@@ -1,7 +1,7 @@
 # Nexus Deployment Utility
 
 Utility for automatic configuration of Nexus repositories, users, etc. </br>
-Currently allow to automatically:
+Currently allow to automatically (parentheses contain json fields that are responsible for the feature):
 - Change admin's password on first Nexus run; (prepare_admin_user)
 - Enable\disable anonymous access; (anonymous_enabled)
 - Create new users; (users)
